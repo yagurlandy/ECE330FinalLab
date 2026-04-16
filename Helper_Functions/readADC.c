@@ -27,7 +27,7 @@ bool isVertical;
 
 // ----------------- ADC read function ------------------------ //
 // Reads one ADC channel at a time and returns an 8-bit value between 0x00 and 0xFF
-//TODO: don't need channel 3 -- delete later
+//TODO: don't need channel 3 -- delete
 
 uint8_t ADC_Read_8bit(uint8_t channel)
 {
@@ -59,7 +59,7 @@ uint8_t ADC_Read_8bit(uint8_t channel)
 
   ADC1->SMPR2 |= (1 << 3); // sample time for channel 1
   ADC1->SMPR2 |= (1 << 6); // sample time for channel 2
-  ADC1->SMPR2 |= (1 << 9); // sample time for channel 3
+  // ADC1->SMPR2 |= (1 << 9); // sample time for channel 3
 
   ADC1->SQR1 = 0;         // one conversion in regular sequence
   ADC1->CR2 |= 1;        // Turn on ADC1 by forcing bit 0 to 1 while keeping other bits unchanged
@@ -69,6 +69,7 @@ uint8_t ADC_Read_8bit(uint8_t channel)
         cursor_x_raw = ADC_Read_8bit(1);     // read channel 1 for red brightness
         cursor_y_raw = ADC_Read_8bit(2);   // read channel 2 for green brightness
         // BLUE_BRT = ADC_Read_8bit(3);    // read channel 3 for blue brightness
+        Update_XY(cursor_x_raw, cursor_y_raw);
         HAL_Delay(1);
     }
 
