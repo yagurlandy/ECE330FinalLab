@@ -8,14 +8,13 @@
 
 //Helper Function: Reads potentiometer input to determine vertical and horizontal scroll for cursor.
 
-#include "stdbool.h"
 #include "math.h"
 
 // -------- VARIABLES and CONSTANTS ----------- //
 char cursor_x_raw = 0;
 char cursor_y_raw = 0;
 int xpos, ypos;
-bool isVertical;
+_Bool isVertical;
 
 //Dimensions of grid in vertical and horizontal modes
 #define XWIDTH_HOR 16
